@@ -79,8 +79,8 @@
   <div class="slider">
     <div class="profile-card card">
       <img src="profile1.jpg" alt="Profile Image">
-      <h3 class="profile-name">John Smith</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <h3 class="profile-name" id="name">John Smith</h3>
+      <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
     <div class="profile-card card">
       <img src="profile2.jpg" alt="Profile Image">
@@ -134,13 +134,21 @@ $("#map-africa").CSSMap({
 
     // Open the relevant section
     $('#' + rLink).toggle();
+
+    // Get the elements and populate with the correct data
+    $.getJSON('data.json', function(data) {
+      console.log('json data: ', data)
+      $('#name').text(data.rLink['t-mboya'].name);
+      $('#description').text(data.rLink['t-mboya'].description);
+    });
   },
+  
   // Close on second click
   onSecondClick: function(listItem){
     var rLink = listItem.children("A").eq(0).attr("id").split("-")[0];
     console.log("Clicked: ",rLink)
 
-    // Open the relevant section
+    // close the open section
     $('#' + rLink).toggle();
   }
 
@@ -171,36 +179,37 @@ document.querySelector('.slider-container').addEventListener('mouseleave', slide
 document.querySelector('.slider-container').addEventListener('mousemove', slideLeft);
   </script>
 
+<!-- Pop-up window on card -->
   <script>
     const profileCards = document.querySelectorAll('.profile-card');
-const popup = document.getElementById('popup');
-const popupTitle = document.querySelector('.popup-title');
-const popupDescription = document.querySelector('.popup-description');
-const closeBtn = document.querySelector('.close-btn');
+    const popup = document.getElementById('popup');
+    const popupTitle = document.querySelector('.popup-title');
+    const popupDescription = document.querySelector('.popup-description');
+    const closeBtn = document.querySelector('.close-btn');
 
-// Function to display the popup with content
-function displayPopup(name, description) {
-  popupTitle.textContent = name;
-  popupDescription.textContent = description;
-  popup.style.display = 'block';
-}
+    // Function to display the popup with content
+    function displayPopup(name, description) {
+      popupTitle.textContent = name;
+      popupDescription.textContent = description;
+      popup.style.display = 'block';
+    }
 
-// Function to hide the popup
-function hidePopup() {
-  popup.style.display = 'none';
-}
+    // Function to hide the popup
+    function hidePopup() {
+      popup.style.display = 'none';
+    }
 
-// Add event listeners to each profile card
-profileCards.forEach(card => {
-  const name = card.querySelector('.profile-name').textContent;
-  const description = card.querySelector('p').textContent;
-  
-  card.addEventListener('click', () => {
-    displayPopup(name, description);
-  });
-});
+    // Add event listeners to each profile card
+    profileCards.forEach(card => {
+      const name = card.querySelector('.profile-name').textContent;
+      const description = card.querySelector('p').textContent;
+      
+      card.addEventListener('click', () => {
+        displayPopup(name, description);
+      });
+    });
 
-// Add event listener to close button
-closeBtn.addEventListener('click', hidePopup);
+    // Add event listener to close button
+    closeBtn.addEventListener('click', hidePopup);
   </script>
 </body>
