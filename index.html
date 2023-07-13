@@ -135,11 +135,21 @@ $("#map-africa").CSSMap({
     // Open the relevant section
     $('#' + rLink).toggle();
 
+    country = 'localhost:8080/'+rLink
+    console.log(country)
+
     // Get the elements and populate with the correct data
-    $.getJSON('data.json', function(data) {
-      console.log('json data: ', data)
-      $('#name').text(data.rLink['t-mboya'].name);
-      $('#description').text(data.rLink['t-mboya'].description);
+    $.ajax({
+      url: country,
+      method: 'GET',
+      dataType: 'json',
+      success: function(response) {
+        console.log('Data:', response.data);
+        // Process the retrieved data as needed
+      },
+      error: function(xhr, status, error) {
+        console.log('Error:', error);
+      }
     });
   },
   
