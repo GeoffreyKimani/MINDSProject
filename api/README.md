@@ -7,7 +7,9 @@
 #### Dev Dependencies
 > Node Js dependency: `npm i -D nodemon` 
 
-> Express Js Installation: `npm i express`
+> Express Js installation: `npm i express`
+
+> Body parser installation: `npm i body-parser`
 
 
 ## Start the server
