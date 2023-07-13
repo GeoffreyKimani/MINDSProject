@@ -1,8 +1,8 @@
 const DbConnect = require('../database/db_util');
 
 // Get all of a country's leaders
-const getAllCountryLeadersService = () => {
-    return DbConnect.getAllCountryLeaders("kenya");
+const getAllCountryLeadersService = (country) => {
+    return DbConnect.getAllCountryLeaders(country);
 };
 
 module.exports = {
