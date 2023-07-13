@@ -15,8 +15,10 @@
 
 ## Test the API
 
- _Server_: `localhost:3000`
+ _Server_: `localhost:8080`
 
- _Base route:_ `/api/`
+ _Base route:_ `/`
 
- _Full base route:_ `localhost:3000/api/`
+ _Full base route:_ `localhost:8080/`
+
+ _Get country:_ `localhost:8080/<country_name>`
