@@ -3,4 +3,4 @@
 npm i -D nodemon
 npm i express
 npm i body-parser
-npm run dev
+node app.js
