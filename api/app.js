@@ -6,15 +6,15 @@ var routes = require("./routes/routes.js");
 var app = express();
 
 // specify port to run the app
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Add parser before specifying the route
 app.use(bodyParser.json());
 
 // specify router entry
 app.use('/', routes)
-routes(app);
+
 
 var server = app.listen(PORT, function () {
-    console.log("app running on port.", server.address().port);
+    console.log("App running on port: ", server.address().port);
 });

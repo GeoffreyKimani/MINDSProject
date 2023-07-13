@@ -4,4 +4,4 @@ const getAllCountryLeaders = (country) => {
     return db.country;
 } 
 
-module.exports = {getAllCountryLeaders};
+module.exports = {getAllCountryLeaders}
