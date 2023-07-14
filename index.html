@@ -125,6 +125,10 @@ $("#map-africa").CSSMap({
       success: function(response) {
         console.log('Data:', response.data);
         var data = response.data
+
+        // Clear the existing cards and data
+        $('#profile-container').empty();
+
         // Process the retrieved data as needed
         $(document).ready(function() {
           console.log("in card function")
@@ -135,7 +139,7 @@ $("#map-africa").CSSMap({
             var profileCard = $('<div>').addClass('profile-card card');
 
             // Add the profile image
-            var profileImage = $('<img>').attr('src', 'profile1.jpg').attr('alt', 'Profile Image');
+            var profileImage = $('<img>').attr('src', value.image).attr('alt', 'Profile Image');
             profileCard.append(profileImage);
 
             // Add the profile name
