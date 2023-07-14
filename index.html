@@ -170,6 +170,20 @@ $("#map-africa").CSSMap({
           $('.close-btn').on('click', function() {
             $('.popup').removeClass('active');
           });
+
+          // Close pop-up when clicked outside the card
+          $(document).on('click', function(event) {
+            var popup = $('.popup');
+            var popupContent = $('.popup-content');
+
+            // Check if the clicked element is outside the popup card
+            if (!popupContent.is(event.target) && popupContent.has(event.target).length === 0) {
+              // Close the popup card
+              popup.removeClass('active');
+            }
+          });
+          // end of close
+
         });
       },
       error: function(xhr, status, error) {
@@ -185,6 +199,9 @@ $("#map-africa").CSSMap({
 
     // close the open section
     $('#' + rLink).toggle();
+      
+    // Clear the profile cards
+  $('#profile-container').empty();
   }
 
 });

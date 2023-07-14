@@ -88,7 +88,7 @@
   }
 
   .popup-image {
-    width: 100%; /* Make the image width fill the container */
+    width: 50%; /* Make the image width fill the container */
     height: auto; /* Auto-adjust the height to maintain aspect ratio */
     object-fit: cover; /* Maintain aspect ratio and cover the container */
   }
