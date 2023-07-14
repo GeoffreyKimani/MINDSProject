@@ -75,29 +75,9 @@
 </div>
 
 <!-- Leaders Div section -->
-<div class="slider-container" id="kenya">
-  <div class="slider">
-    <div class="profile-card card">
-      <img src="profile1.jpg" alt="Profile Image">
-      <h3 class="profile-name" id="name">John Smith</h3>
-      <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </div>
-    <div class="profile-card card">
-      <img src="profile2.jpg" alt="Profile Image">
-      <h3 class="profile-name">Jane Doe</h3>
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="profile-card card">
-      <img src="profile3.jpg" alt="Profile Image">
-      <h3 class="profile-name">David Johnson</h3>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-    </div>
-    <!-- Add more profile cards here -->
-    <div class="profile-card card">
-      <img src="profile3.jpg" alt="Profile Image">
-      <h3 class="profile-name">David Johnson</h3>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-    </div>
+<div class="slider-container">
+  <div class="slider" id="profile-container">
+    <!-- Cards will be added dynamically here -->
   </div>
 </div>
 
@@ -108,7 +88,6 @@
     <button class="close-btn">Close</button>
   </div>
 </div>
-
 <!-- End Profiles -->
 
 
@@ -129,7 +108,7 @@ $("#map-africa").CSSMap({
   "responsive": "auto",
   // Toggle active region div
   onClick: function(listItem){
-    var rLink = listItem.children("A").eq(0).attr("id").split("-")[0];
+    var rLink = listItem.children("A").eq(0).attr("href").substring(1);
     console.log("Clicked: ",rLink)
 
     // Open the relevant section
@@ -145,7 +124,47 @@ $("#map-africa").CSSMap({
       dataType: 'json',
       success: function(response) {
         console.log('Data:', response.data);
+        var data = response.data
         // Process the retrieved data as needed
+        $(document).ready(function() {
+          console.log("in card function")
+          // Iterate over the data object and create profile cards
+          $.each(data, function(key, value) {
+            console.log('Generating cards')
+            // Create a new profile card
+            var profileCard = $('<div>').addClass('profile-card card');
+
+            // Add the profile image
+            var profileImage = $('<img>').attr('src', 'profile1.jpg').attr('alt', 'Profile Image');
+            profileCard.append(profileImage);
+
+            // Add the profile name
+            var profileName = $('<h3>').addClass('profile-name').text(value.name);
+            profileCard.append(profileName);
+
+            // Add the profile short description
+            var profileDescriptionShort = $('<p>').addClass('profile-description-short').text(value.description.substring(0, 50) + '...');
+            profileCard.append(profileDescriptionShort);
+
+            // Add click event listener to show pop-up
+            profileCard.on('click', function() {
+              // Update the pop-up content with the profile details
+              $('.popup-title').text(value.name);
+              $('.popup-description').text(value.description);
+              $('.popup').addClass('active');
+              // Show the pop-up
+              $('.popup').css('display', 'block');
+            });
+
+            // Append the profile card to the container
+            $('#profile-container').append(profileCard);
+          });
+
+          // Close pop-up on button click
+          $('.close-btn').on('click', function() {
+            $('.popup').removeClass('active');
+          });
+        });
       },
       error: function(xhr, status, error) {
         console.log('Error:', error);
