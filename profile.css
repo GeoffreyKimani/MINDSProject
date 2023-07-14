@@ -56,18 +56,45 @@
   .profile-card p {
     margin-bottom: 0;
   }
-  
+
+/* Profile Card CSS */
+.profile-card img {
+  width: 100px; /* Fixed width for the profile image */
+  height: 100px; /* Fixed height for the profile image */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+/* Popup Card CSS */
   .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #d9c7c3;
+    background-color: #dfd0cd;
     padding: 20px;
     z-index: 9999;
-    width: 80%; /* Set the initial width to cover 80% of the screen */
-    border-radius: 15px;
+    width: 80%; /* Set a fixed width for the popup card */
+    max-height: 80vh; /* Set a maximum height for the popup card */
+    overflow-y: auto; /* Enable vertical scrolling when the content exceeds the height */
+  }
+
+  .popup-content {
+    text-align: center;
+  }
+
+  .popup-title {
+    margin-top: 0;
+  }
+
+  .popup-image {
+    width: 100%; /* Make the image width fill the container */
+    height: auto; /* Auto-adjust the height to maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+
+  .close-btn {
+    margin-top: 20px;
   }
 
   .popup:hover {
@@ -85,18 +112,6 @@
     .popup {
       width: 100%; /* Adjust the width for even smaller screens */
     }
-  }  
-  
-  .popup-content {
-    text-align: center;
-  }
-  
-  .popup-title {
-    margin-top: 0;
-  }
-  
-  .close-btn {
-    margin-top: 20px;
   }
     
   #kenya {
