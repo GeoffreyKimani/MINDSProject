@@ -38,7 +38,7 @@
   }
   
   .profile-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage value to control the number of cards per row */
+    flex: 0 0 calc(45% - 20px); /* Adjust the percentage value to control the number of cards per row */
     margin: 10px;
     background-color: #D5C2BD;
     padding: 20px;
@@ -72,20 +72,33 @@
   .profile-card p {
     margin-bottom: 0;
   }
-
-  .popup {
+  /* background-color: #d9c7c3;
+   */
+   .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #cab1ab;
+    background-color: #fff;
     padding: 20px;
     z-index: 9999;
-    width: 500px; /* Adjust the width of the pop-up card */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 400px; /* Set a maximum height for the pop-up card */
+    width: 80%; /* Set the initial width to cover 80% of the screen */
+    max-width: 800px; /* Set a maximum width for larger screens */
   }
+  
+  /* Adjust the width and max-width values for different screen sizes */
+  @media (max-width: 768px) {
+    .popup {
+      width: 90%; /* Adjust the width for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .popup {
+      width: 100%; /* Adjust the width for even smaller screens */
+    }
+  }  
   
   .popup-content {
     text-align: center;

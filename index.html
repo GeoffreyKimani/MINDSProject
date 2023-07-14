@@ -84,10 +84,12 @@
 <div id="popup" class="popup">
   <div class="popup-content">
     <h2 class="popup-title"></h2>
+    <img class="popup-image" src="" alt="Popup Image">
     <p class="popup-description">Some great leader</p>
     <button class="close-btn">Close</button>
   </div>
 </div>
+
 <!-- End Profiles -->
 
 
@@ -155,9 +157,9 @@ $("#map-africa").CSSMap({
               // Update the pop-up content with the profile details
               $('.popup-title').text(value.name);
               $('.popup-description').text(value.description);
+              $('.popup-image').attr('src', 'images/' + value.image); // Set the image source for the popup card
               $('.popup').addClass('active');
-              // Show the pop-up
-              $('.popup').css('display', 'block');
+              $('.popup').css('display', 'block'); // Show the pop-up
             });
 
             // Append the profile card to the container
