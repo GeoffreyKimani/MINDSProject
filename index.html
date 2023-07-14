@@ -157,8 +157,8 @@ $("#map-africa").CSSMap({
               // Update the pop-up content with the profile details
               $('.popup-title').text(value.name);
               $('.popup-description').text(value.description);
-              $('.popup-image').attr('src', 'images/' + value.image); // Set the image source for the popup card
-              $('.popup').addClass('active');
+              $('.popup-image').attr('src', value.image); // Set the image source for the popup card
+              $('.popup').addClass('active'); // Which leader's profile is selected rn 
               $('.popup').css('display', 'block'); // Show the pop-up
             });
 

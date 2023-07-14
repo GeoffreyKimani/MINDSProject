@@ -8,29 +8,13 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   
   .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
   }
   
-  /* .slider {
-    display: flex;
-    width: fit-content;
-    transition: transform 0.5s;
-    padding: 20px;
-  }
-
-  .profile-card {
-    flex-shrink: 0;
-    width: 300px;
-    margin-right: 20px; 
-    background-color: #D5C2BD;
-    padding: 20px;
-    position: relative;
-  } */
-
   .slider {
     display: flex;
     flex-wrap: wrap;
@@ -72,19 +56,22 @@
   .profile-card p {
     margin-bottom: 0;
   }
-  /* background-color: #d9c7c3;
-   */
-   .popup {
+  
+  .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #d9c7c3;
     padding: 20px;
     z-index: 9999;
     width: 80%; /* Set the initial width to cover 80% of the screen */
-    max-width: 800px; /* Set a maximum width for larger screens */
+    border-radius: 15px;
+  }
+
+  .popup:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
   /* Adjust the width and max-width values for different screen sizes */
