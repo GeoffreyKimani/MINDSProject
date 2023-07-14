@@ -15,7 +15,7 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
-  .slider {
+  /* .slider {
     display: flex;
     width: fit-content;
     transition: transform 0.5s;
@@ -24,12 +24,39 @@
 
   .profile-card {
     flex-shrink: 0;
-    width: 300px; /* Adjust the width to fit your profile cards */
-    margin-right: 20px; /* Adjust the margin between profile cards */
+    width: 300px;
+    margin-right: 20px; 
+    background-color: #D5C2BD;
+    padding: 20px;
+    position: relative;
+  } */
+
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .profile-card {
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the percentage value to control the number of cards per row */
+    margin: 10px;
     background-color: #D5C2BD;
     padding: 20px;
     position: relative;
   }
+  
+  /* Adjust the flex percentage and margin as needed for different screen sizes */
+  @media (max-width: 768px) {
+    .profile-card {
+      flex: 0 0 calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-card {
+      flex: 0 0 100%;
+    }
+  }  
   
   .profile-card img {
     width: 100px;
